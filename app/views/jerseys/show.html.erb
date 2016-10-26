@@ -20,3 +20,21 @@
 
 <%= link_to 'Edit', edit_jersey_path(@jersey) %> |
 <%= link_to 'Back', jerseys_path %>
+
+<%= form_tag "/transactions", id: "checkout", method: :post do %>
+  <div id="payment-form"></div>
+  <%= hidden_field_tag :amount, @jersey.price %>
+  <%= submit_tag "Buy Now", class: "btn btn-primary" %>
+<% end %>
+
+<script src="https://js.braintreegateway.com/js/braintree-2.29.0.min.js"></script>
+<script>
+// We generated a client token for you so you can test out this code
+// immediately. In a production-ready integration, you will need to
+// generate a client token on your server (see section below).
+var clientToken = "<%= @client_token %>";
+
+braintree.setup(clientToken, "dropin", {
+  container: "payment-form"
+});
+</script>

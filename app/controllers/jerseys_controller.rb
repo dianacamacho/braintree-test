@@ -1,4 +1,6 @@
 class JerseysController < ApplicationController
+  require "rubygems"
+  require "braintree"
   before_action :set_jersey, only: [:show, :edit, :update, :destroy]
 
   # GET /jerseys
@@ -10,6 +12,7 @@ class JerseysController < ApplicationController
   # GET /jerseys/1
   # GET /jerseys/1.json
   def show
+    @client_token = Braintree::ClientToken.generate
   end
 
   # GET /jerseys/new
