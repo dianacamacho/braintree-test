@@ -1,0 +1,22 @@
+<p>
+  <strong>Team:</strong>
+  <%= @jersey.team %>
+</p>
+
+<p>
+  <strong>Player:</strong>
+  <%= @jersey.player %>
+</p>
+
+<p>
+  <strong>Number:</strong>
+  <%= @jersey.number %>
+</p>
+
+<p>
+  <strong>Price:</strong>
+  <%= number_to_currency(@jersey.price) %>
+</p>
+
+<%= link_to 'Edit', edit_jersey_path(@jersey) %> |
+<%= link_to 'Back', jerseys_path %>
