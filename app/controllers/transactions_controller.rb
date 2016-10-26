@@ -14,7 +14,11 @@ class TransactionsController < ApplicationController
     )
 
     if result.success?
-      @transaction = Transaction.create(total: params[:amount])
+      transaction = result.transaction
+      @transaction = Transaction.create(
+        total: params[:amount],
+        braintree_transaction_id: transaction.id
+      )
       flash[:success] = "Thank you for your purchase!"
       redirect_to transaction_path(@transaction)
     else

@@ -1,4 +1,5 @@
 <h2>Transaction Details</h2>
 
+<p><strong>Transaction ID: </strong><%= @transaction.braintree_transaction_id %></p>
 <p><strong>Purchase Date: </strong><%= @transaction.created_at %></p>
-<p><strong>Total: </strong><%= @transaction.total %></p>
+<p><strong>Total: </strong><%= number_to_currency(@transaction.total) %></p>
